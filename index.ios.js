@@ -3,21 +3,23 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text
+  Text,
+  NavigatorIOS
 } from 'react-native';
 
+var SearchPage = require('./SearchPage');
+
 var styles = StyleSheet.create({
-  text: {
-    color: 'black',
-    backgroundColor: 'white',
-    fontSize: 30,
-    margin: 80
+  container:  {
+    flex: 1
   }
 });
 
 class PropertyFinderApp extends Component {
   render() {
-    return React.createElement(Text, {style: styles.text}, "Hello World!");
+    return (
+      <NavigatorIOS style={styles.container} initialRoute= {{title: 'Property Finder', component: SearchPage, }}/>
+    );
   }
 }
 
