@@ -1,5 +1,7 @@
 'use strict';
 
+var PropertyView = require('./PropertyView');
+
 import React, {Component} from 'react';
 import {
   StyleSheet,
@@ -46,6 +48,16 @@ class SearchResults extends Component {
     this.state = {
       dataSource: dataSource.cloneWithRows(this.props.listings)
     };
+  }
+
+  rowPressed(propertyGuid) {
+  var property = this.props.listings.filter(prop => prop.guid === propertyGuid)[0];
+
+    this.props.navigator.push({
+      title: 'Property',
+      component: PropertyView,
+      passProps: {property: property}
+    })
   }
 
   renderRow(rowData, sectionId, rowId) {
